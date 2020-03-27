@@ -1,14 +1,19 @@
+//Importing DATABASE
 require("./models/db")
 const express = require("express");
 const app = express();
 const path = require("path");
-const exphs = require("express-handlebars");
+const ejs = require("ejs");
 const bodyparser = require("body-parser");
+const dotenv = require("dotenv")
 
 
+//Configuring environment variable
+dotenv.config({path: "./config.env"})
 
 //Importing Controllers
-const studentController = require("./controllers/studentController")
+const visitorController = require("./controllers/visitorController")
+const userController = require("./controllers/userController")
 const adminController = require("./controllers/adminController")
 
 //Importing the body-parser middle ware
@@ -19,12 +24,12 @@ app.use(bodyparser.json());
 
 //Setting Up template engine
 app.set("views", path.join(__dirname,"/views/"));
-app.engine("hbs", exphs({extname: "hbs", defaultLayout: "adminLayout", layoutsDir: __dirname + "/views/layouts/"}));
-app.set("view engine", "hbs");
+app.set("view engine", "ejs");
 
 //Using Controllers
-app.use("/student", studentController)
-app.use("/admin", adminController)
+app.use("/", visitorController)
+// app.use("/user", studentController)
+// app.use("/admin", adminController)
 
 //Static Page
 app.use(express.static("public"));
