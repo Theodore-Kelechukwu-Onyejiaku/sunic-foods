@@ -3,14 +3,17 @@ const path = require('path');
 const dotenv = require("dotenv")
 
 //configuring dotenv
-dotenv.config({path: './config.env'})
+require('dotenv').config()
 
 
-mongoose.connect(process.env.DATABASE, {useNewUrlParser: true}, (err)=>{
-}).then(connection =>{
-    console.log("MongoDB Connection Successful")
+mongoose.connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+}).then(connection=>{
+    console.log("MongoDB connection successful")
 }).catch(err =>{
-    console.error()
+    console.error("Error connecting to database: "+err)
 })
 
 // //Registering the Student model

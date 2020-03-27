@@ -9,7 +9,7 @@ const dotenv = require("dotenv")
 
 
 //Configuring environment variable
-dotenv.config({path: "./config.env"})
+require('dotenv').config()
 
 //Importing Controllers
 const visitorController = require("./controllers/visitorController")
