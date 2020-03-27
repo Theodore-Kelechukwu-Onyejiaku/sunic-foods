@@ -37,3 +37,11 @@ Below are the features of Fast-Food-Fast Application at this point
 - Admin can get a specific menu 
 <br/>
 
+## API Endpoints
+
+<table>
+    Under development
+</table>
+
+
+**_This project is under development phase. STAY TUNED_**
