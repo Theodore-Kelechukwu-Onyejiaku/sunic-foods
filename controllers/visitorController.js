@@ -20,5 +20,8 @@ router.get("/contact", (req, res)=>{
     res.render("visitorLayouts/contact", {message: "Visitor Layout"});
 })
 
+router.get("/login", (req, res)=>{
+    res.render("visitorLayouts/login", {message: "Visitor Layout"})
+})
 
 module.exports = router;
