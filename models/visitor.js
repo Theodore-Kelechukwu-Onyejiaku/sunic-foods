@@ -14,5 +14,4 @@ const visitorSchema = new mongoose.Schema({
     }
 })
 
-visitorSchema.plugin(passportLocalMongoose, {usernameField: "email"});
 module.exports = mongoose.model('Visitor', visitorSchema);

@@ -17,18 +17,7 @@ const Visitor = require("./models/visitor")
 //Configuring environment variable
 require('dotenv').config()
 
-//Middleware for session
-app.use(session({
-    secret: "Just a simple login and signup app",
-    resave: true,
-    saveUninitialized: true
-}));
 
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new localStrategy({usernameField: "email"},Visitor.authenticate()));
-passport.serializeUser(Visitor.serializeUser);
-passport.deserializeUser(Visitor.deserializeUser());
 
 
 //Importing the body-parser middle ware
