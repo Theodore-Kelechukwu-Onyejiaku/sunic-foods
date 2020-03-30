@@ -16,8 +16,12 @@ mongoose.connect(process.env.DATABASE, {
     console.error("Error connecting to database: "+err)
 })
 
+//Registering Visitor Model
+require("./visitor")
+
 // //Registering the Student model
 // require("./student")
 
 // //REgistering the Course model
 // require("./course")
+

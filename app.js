@@ -6,21 +6,43 @@ const path = require("path");
 const ejs = require("ejs");
 const bodyparser = require("body-parser");
 const dotenv = require("dotenv")
+const session = require("express-session");
+const passport = require("passport");
+const localStrategy = require("passport-local").Strategy;
 
+
+//Importing Visitor Model
+const Visitor = require("./models/visitor")
 
 //Configuring environment variable
 require('dotenv').config()
 
-//Importing Controllers
-const visitorController = require("./controllers/visitorController")
-const userController = require("./controllers/userController")
-const adminController = require("./controllers/adminController")
+//Middleware for session
+app.use(session({
+    secret: "Just a simple login and signup app",
+    resave: true,
+    saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy({usernameField: "email"},Visitor.authenticate()));
+passport.serializeUser(Visitor.serializeUser);
+passport.deserializeUser(Visitor.deserializeUser());
+
 
 //Importing the body-parser middle ware
 app.use(bodyparser.urlencoded({
     extended: true
 }));
 app.use(bodyparser.json());
+
+//Importing Controllers
+const visitorController = require("./controllers/visitorController")
+const userController = require("./controllers/userController")
+const adminController = require("./controllers/adminController")
+
+
 
 //Setting Up template engine
 app.set("views", path.join(__dirname,"/views/"));
