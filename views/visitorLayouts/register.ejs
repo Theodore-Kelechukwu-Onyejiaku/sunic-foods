@@ -36,8 +36,8 @@
     <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
-				<form class="login100-form validate-form" action="/register" method="POST">
-					<h2 class="text-danger"><%= message %></h2>
+				<form class="login100-form validate-form" action="/register" method="POST" >
+					<span style="text-align:center"><%- include("../partials/message") -%></span>
 					<h4 class="login100-form-title p-b-55">
 						Register/Sign Up
                     </h4>
@@ -66,7 +66,7 @@
                     </div>
 
                     <div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-						<input class="input100" type="password" name="" placeholder="Confirm Password" id="pw2">
+						<input class="input100" type="password"  placeholder="Confirm Password" id="pw2">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<span class="lnr lnr-lock"></span>
