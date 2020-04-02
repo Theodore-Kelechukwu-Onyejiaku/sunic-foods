@@ -10,6 +10,21 @@ const User = require("../models/user")
 
 //const Menu = mongoose.model("menu");
 
+//middle ware to check if user is authenticated
+function isAuthenticated(req, res, next){
+    if(req.isAuthenticated()){
+        return next()
+    }
+    req.flash("error_msg", "Please login to view this page");
+    res.redirect("/login")
+}
+
+//To Apply for delivery service
+router.get("/work", (req, res)=>{
+    res.render("userLayouts/work")
+})
+
+
 
 router.get("/", (req, res)=>{
     res.render("visitorLayouts/index", {message: "Visitor Layout"});
@@ -31,12 +46,18 @@ router.get("/login", (req, res)=>{
     res.render("visitorLayouts/login", {message: ""})
 })
 
+router.get("/logout", (req, res)=>{
+    req.logout();
+    req.flash("success_msg", "You have logged out successfully")
+    res.redirect("/login")
+})
+
 router.get("/register",async (req, res)=>{
         res.render("visitorLayouts/register", {message: ""})
 })
 
-router.get("/dashboard",async (req, res)=>{
-    res.render("userLayouts/dashboard", {message: ""})
+router.get("/dashboard", isAuthenticated, (req, res)=>{
+    res.render("userLayouts/dashboard")
 })
 
 
