@@ -1,1 +1,71 @@
-<h1>Welcome to sunic</h1>
+<%- include("../partials/header") -%>
+<div class="bradcam_area delivery_bg_2">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text text-center">
+                    <h3>Work for us</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5 mb-5">
+    <div class="heading">
+        <h2 class="text-center">Apply For Job</h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form action="/work" method="POST">
+
+                <!-- Starting hidden inputs-->
+                <input type="hidden" name="_id" value="<%= currentUser._id %>">
+                <input type="hidden" name="name" id="" value="<%= currentUser.name %>" class="form-control" placeholder="Full Name">
+                <input type="hidden" name="email" value="<%= currentUser.email %>" id="" class="form-control" placeholder="Email Address">
+                <!-- End of Hidden Inputs-->
+
+                <div class="form-group">
+                        <label for="">Full Name</label>
+                        <input type="text" name="" id="" value="<%= currentUser.name %>" class="form-control" placeholder="Full Name" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Address</label>
+                        <input type="text" name="address" value="" id="" class="form-control" placeholder="Lodge, Hostel, Home or any address Address">
+                    </div>
+                    <div class="form-group">
+                        <select name="gender" id="">
+                            <option  value="male" id="" class="radio-form-control"> Male
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Date of Birth</label>
+                        <input type="date" name="dob" value="" id="" class="form-control" placeholder="Date of Birth">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Email Address</label>
+                        <input type="email" name="" value="<%= currentUser.email %>" id="" class="form-control" placeholder="Email Address" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Phone Number</label>
+                        <input type="text" name="number" value="" id="" class="form-control" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Passport</label>
+                        <input type="file" name="photo" value="" id="" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i>Apply</button>
+                    </div>
+                    </div>
+                </form>
+            </div>
+            <div class="mt-5 text-center">
+                <h4><a href="/dashboard" class="btn btn-danger"><i class="fa fa-arrow-left"></i>Back</a></h4>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<%- include("../partials/footer") -%>

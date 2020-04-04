@@ -95,6 +95,9 @@ router.post("/register", (req, res)=>{
     })
 })
 
-
+router.post("/login", (req, res)=>{
+    const user = new User();
+    
+})
 
 module.exports = router;

@@ -49,7 +49,7 @@ app.use((req, res, next)=>{
 
 
 //Importing Controllers
-const visitorController = require("./controllers/userController")
+//const visitorController = require("./controllers/userController")
 const userController = require("./controllers/userController")
 const adminController = require("./controllers/adminController")
 
