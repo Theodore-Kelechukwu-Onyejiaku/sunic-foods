@@ -19,6 +19,9 @@ mongoose.connect(process.env.DATABASE, {
 //Registering Visitor Model
 require("./user")
 
+//Registering Work Model
+require("./work")
+
 // //Registering the Student model
 // require("./student")
 

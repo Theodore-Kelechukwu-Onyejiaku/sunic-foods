@@ -11,7 +11,9 @@ const crypto = require("crypto");
 const flash = require("connect-flash");
 const session = require('express-session');
 const passport = require("passport")
+const multer = require("multer")
 const LocalStrategy = require("passport-local").Strategy;
+
 
 //Importing user model
 const User = require("./models/user")
@@ -27,6 +29,7 @@ app.use(session({
 }))
 
 
+//Configuring Passport 
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy({usernameField: 'email'}, User.authenticate()));
@@ -53,10 +56,13 @@ app.use((req, res, next)=>{
 const userController = require("./controllers/userController")
 const adminController = require("./controllers/adminController")
 
+
 //Importing the body-parser middle ware
 app.use(bodyparser.urlencoded({
     extended: true
 }));
+app.use(bodyparser.json())
+
 
 //Setting Up template engine
 app.set("views", path.join(__dirname,"views"));
@@ -65,7 +71,7 @@ app.set("view engine", "ejs");
 //Using Controllers
 app.use("/", userController)
 // app.use("/user", studentController)
-// app.use("/admin", adminController)
+app.use("/admin", adminController)
 
 //Static Page
 app.use(express.static("public"));

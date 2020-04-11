@@ -1,14 +1,40 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
-const passport = require("passport")
+const passport = require("passport");
+const multer = require("multer")
+const bodyparser = require("body-parser");
+
+
+
+//configuring multer
+var storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, './public/uploads/work')},
+        filename: function(req, file, cb){
+            cb(null, file.filename + "-" + Date.now());
+        }
+})
+var upload = multer({storage : storage});
+
+
+//Importing the body-parser middle ware
+router.use(bodyparser.urlencoded({
+    extended: true
+}));
+router.use(bodyparser.json())
+
+
 
 
 //Importing Visitor Model
-const User = require("../models/user")
+const User = require("../models/user");
+//Importing Work Model so students or users can register
+const Work = require("../models/work");
 
 
-//const Menu = mongoose.model("menu");
+//Importing Menu Middleware 
+//const Menu = require("../models/user");
 
 //middle ware to check if user is authenticated
 function isAuthenticated(req, res, next){
@@ -95,9 +121,15 @@ router.post("/register", (req, res)=>{
     })
 })
 
-router.post("/login", (req, res)=>{
-    const user = new User();
-    
+router.post("/work", upload.single("photo"), (req, res)=>{
+   // res.end("successfully uploaded:"+req.body)
+   User.findOneAndUpdate({_id: req.body._id}, req.body, {new: true}, (err, doc)=>{
+    if(!err){
+        res.end("successfully applied");
+        console.log(req.body)
+    }else{
+        console.error("Error in updating student information"+ err)
+    }
 })
-
+})
 module.exports = router;
