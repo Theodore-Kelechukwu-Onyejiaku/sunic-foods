@@ -9,11 +9,10 @@ const bodyparser = require("body-parser");
 
 //configuring multer
 var storage = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null, './public/uploads/work')},
-        filename: function(req, file, cb){
-            cb(null, file.filename + "-" + Date.now());
-        }
+        destination: "./public/uploads/work",
+        filename: (req, file, cb)=>{
+            cb(null, Date.now()+".png")
+        },
 })
 var upload = multer({storage : storage});
 
@@ -47,7 +46,7 @@ function isAuthenticated(req, res, next){
 
 //To Apply for delivery service
 router.get("/work", (req, res)=>{
-    res.render("userLayouts/work")
+    res.render("userLayouts/work");
 })
 
 
@@ -114,7 +113,7 @@ router.post("/register", (req, res)=>{
             console.log(err)
         }
         passport.authenticate("local") (req, res, ()=>{
-            req.flash("success_msg", "Account create successfully")
+            req.flash("success_msg", "Account created successfully")
             res.redirect("/login")
             console.log("successfully registered")
         })
@@ -124,8 +123,9 @@ router.post("/register", (req, res)=>{
 router.post("/work", upload.single("photo"), (req, res)=>{
    // res.end("successfully uploaded:"+req.body)
    User.findOneAndUpdate({_id: req.body._id}, req.body, {new: true}, (err, doc)=>{
+    console.log(req.file);
     if(!err){
-        res.end("successfully applied");
+        res.render("userLayouts/work");
         console.log(req.body)
     }else{
         console.error("Error in updating student information"+ err)

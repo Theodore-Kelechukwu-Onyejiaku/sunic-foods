@@ -1,0 +1,9 @@
+<%- include("../partials/header") -%>
+    <div class="container text-center"  style="margin-top:10rem; margin-bottom: 10rem;">
+        <h1>Job Status</h2>
+        <h3 class="card-title">Status: <span class="text-success"><%= currentUser.applied %></span></h5>
+        <h3 class="card-title">Approved: <span class="text-warning"><%= currentUser.approved %></span></h5> 
+        <a href="/dashboard"  class="btn btn-danger"><i class="fa fa-arrow-left"></i>Back</a>
+    </div>
+
+<%- include("../partials/footer") -%>

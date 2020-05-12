@@ -6,7 +6,7 @@ const dotenv = require("dotenv")
 require('dotenv').config()
 
 
-mongoose.connect(process.env.DATABASE, {
+mongoose.connect(process.env.DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true

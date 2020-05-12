@@ -1,79 +1,117 @@
 <%- include("../partials/header") -%>
-<div class="bradcam_area delivery_bg_2">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="bradcam_text text-center">
-                    <h3>Work for us</h3>
+<% if(currentUser.applied === "applied"){ %>
+    <div class="container text-center"  style="margin-top:10rem; margin-bottom: 10rem;">
+        <h1>Job Status</h2>
+        <h3 class="card-title">Status: <span class="text-success"><%= currentUser.applied %></span></h5>
+        <h3 class="card-title">Approved: <span class="text-warning"><%= currentUser.approved %></span></h5> 
+        <a href="/dashboard"  class="btn btn-danger"><i class="fa fa-arrow-left"></i>Back</a>
+    </div>
+<% }else{ %>
+    <div class="bradcam_area delivery_bg_2">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>Work for us</h3>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="container mt-5 mb-5">
-    <div class="heading">
-        <h2 class="text-center">Apply For Job</h2>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <% if(currentUser){ %>
-                    <form action="/work" method="POST" enctype="multipart/form-data">
-
-                        <!-- Starting hidden inputs-->
-                        <input type="hidden" name="_id" value="<%= currentUser._id %>">
-                        <input type="hidden" name="name" id="" value="<%= currentUser.name %>" class="form-control" placeholder="Full Name">
-                        <input type="hidden" name="email" value="<%= currentUser.email %>" id="" class="form-control" placeholder="Email Address">
-                        <input type="hidden" name="applied" value="applied">
-                        <!-- End of Hidden Inputs-->
-        
-                        <div class="form-group">
-                                <label for="">Full Name</label>
-                                <input type="text" name="" id="" value="<%= currentUser.name %>" class="form-control" placeholder="Full Name" disabled required>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Address</label>
-                                <input type="text" name="address" value="" id="" class="form-control" placeholder="Lodge, Hostel, Home or any address Address" required>
-                            </div>
-                            <div class="form-group">
-                               <label for="">Gender</label><br>
-                               <input type="radio" name="gender" id="" value="male" selected>Male <br>
-                               <input type="radio" name="gender" id="" value="female">Female
-                            </div>
-                            <div class="form-group">
-                                <label for="">Date of Birth</label>
-                                <input type="date" name="dob" value="" id="" class="form-control" placeholder="Date of Birth" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Email Address</label>
-                                <input type="email" name="" value="<%= currentUser.email %>" id="" class="form-control" placeholder="Email Address" disabled required>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Phone Number</label>
-                                <input type="text" name="number" value="" id="" class="form-control" placeholder="Phone Number" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Photo/Passport or any form of Identification</label>
-                                <input type="file" name="photo" value="" id="" class="form-control" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i>Apply</button>
-                            </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="mt-5 text-center">
-                        <h4><a href="/dashboard" class="btn btn-danger"><i class="fa fa-arrow-left"></i>Back</a></h4>
-                    </div>
-                <% } else {%>
-                    <div class="text-center text-danger">Cannot get user data at the moment please   <a class="bg-danger text-white" href="/login">Login </a>   to continue</div>
-                <% } %>  
-                </div>
-            </div>    
-        </div>            
-       
-            
+    <div class="container mt-5 mb-5">
+        <div class="heading">
+            <h2 class="text-center">Apply For Job</h2>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <% if(currentUser){ %>
+                        <form action="/work" method="POST" enctype="multipart/form-data">
     
-    </div>            
+                            <!-- Starting hidden inputs-->
+                            <input type="hidden" name="_id" value="<%= currentUser._id %>">
+                            <input type="hidden" name="name" id="" value="<%= currentUser.name %>" class="form-control" placeholder="Full Name">
+                            <input type="hidden" name="email" value="<%= currentUser.email %>" id="" class="form-control" placeholder="Email Address">
+                            <input type="hidden" name="applied" value="applied">
+                            <input type="hidden" name="approved" value="pending">
+                            
+                            <!-- End of Hidden Inputs-->
+            
+                            <div class="form-group">
+                                    <label for="">Full Name</label>
+                                    <input type="text" name="" id="" value="<%= currentUser.name %>" class="form-control" placeholder="Full Name" disabled required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Address</label>
+                                    <input type="text" name="address" value="" id="" class="form-control" placeholder="Lodge, Hostel, Home or any address Address" required>
+                                </div>
+                                <div class="form-group">
+                                   <label for="">Gender</label><br>
+                                   <input type="radio" name="gender" id="" value="male" selected>Male <br>
+                                   <input type="radio" name="gender" id="" value="female">Female
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Date of Birth</label>
+                                    <input type="date" name="dob" value="" id="" class="form-control" placeholder="Date of Birth" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Email Address</label>
+                                    <input type="email" name="" value="<%= currentUser.email %>" id="" class="form-control" placeholder="Email Address" disabled required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Phone Number</label>
+                                    <input type="text" name="number" value="" id="" class="form-control" placeholder="Phone Number" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Photo/Passport or any form of Identification</label>
+                                    <img id="blah" src="#" alt="your image" style="height: 100%; width: 100%;"/>
+                                    <input type="file" name="photo" value="" id="imgInp" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" required name="reason" placeholder="why do you want this role?"></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <button type="submit" id="sbt" class="btn btn-success"><i class="fa fa-check"></i>Apply</button>
+                                </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <h4><a href="/dashboard" class="btn btn-danger"><i class="fa fa-arrow-left"></i>Back</a></h4>
+                        </div>
+                    <% } else {%>
+                        <div class="text-center text-danger">Cannot get user data at the moment please   <a class="bg-danger text-white" href="/login">Login </a>   to continue</div>
+                    <% } %>  
+                    </div>
+                </div>    
+            </div>            
+           
+                
+        
+        </div>   
+        <script type="text/javascript">
+    
+            if($("#imgInp").value){
+                $("#blah").style.display = "block";
+            }
+    
+            function readURL(input) {
+            if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function(e) {
+            $('#blah').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+            }
+            
+            $("#imgInp").change(function() {
+            readURL(this);
+            });
+            
+          </script>             
+<% } %>
 <%- include("../partials/footer") -%>

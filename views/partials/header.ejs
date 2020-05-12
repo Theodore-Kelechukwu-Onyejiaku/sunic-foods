@@ -57,7 +57,7 @@
                                                 <ul class="submenu">
                                                     <li><a href="/logout">logout</a></li>
                                                     <li><a href="/wallet">View Wallet</a></li>
-                                                    <li><a href="/work">Work With Us</a></li>
+                                                    <li><a href="/work/<%= currentUser._id %>">Work With Us</a></li>
                                                 </ul>
                                             </li> 
                                           <%   } %>
@@ -81,7 +81,7 @@
         </div>
     </header>
     <!-- header-end -->
-
+<script src="/js/jquery-3.2.1.min.js"></script>
 
 
 
