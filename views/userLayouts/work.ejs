@@ -1,10 +1,15 @@
 <%- include("../partials/header") -%>
 <% if(currentUser.applied === "applied"){ %>
     <div class="container text-center"  style="margin-top:10rem; margin-bottom: 10rem;">
-        <h1>Job Status</h2>
+        <h1>Job Status</h2><hr>
         <h3 class="card-title">Status: <span class="text-success"><%= currentUser.applied %></span></h5>
-        <h3 class="card-title">Approved: <span class="text-warning"><%= currentUser.approved %></span></h5> 
+        <h3 class="card-title">Hired: <span class="text-warning"><%= currentUser.approved %></span></h5> 
         <a href="/dashboard"  class="btn btn-danger"><i class="fa fa-arrow-left"></i>Back</a>
+
+        <div class="mt-5 text-info">
+            <h3>Successfully Hired!</h3>
+            <a class="text-danger" href="/delivery" style="text-decoration: underline;">Deliver Foods Now!!!</a>
+        </div>
     </div>
 <% }else{ %>
     <div class="bradcam_area delivery_bg_2">
@@ -86,10 +91,7 @@
                     </div>
                 </div>    
             </div>            
-           
-                
-        
-        </div>   
+         </div>
         <script type="text/javascript">
     
             if($("#imgInp").value){

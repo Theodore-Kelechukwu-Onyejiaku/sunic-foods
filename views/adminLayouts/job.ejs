@@ -1,0 +1,45 @@
+<%- include("../partials/adminHeader") -%>
+Welcome to jobs
+<div class="container">
+    <table class="table table-responsive table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>DOB</th>
+                <th>Phone</th>
+                <th>Approve</th>
+                <th>Reason</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% doc.forEach(job =>{{ %>
+                <tr>
+                    <td>  <%= job.name %> </td>
+                    <td>  <%= job.address %> </td>
+                    <td>  <%= job.dob %> </td>
+                    <td>  <%= job.number %> </td>
+                    <td>  
+                        <% if (job.approved !== "approved") {%>
+                            <span class="text-danger"><%= job.approved %></span>
+                            <form action="/admin/work" method="POST">
+                                <input type="hidden" name="_id" value="<%= job._id %>">
+                                <input type="hidden" value="approved" name="approved">
+                                <input class="btn btn-success" type="submit" value="Hire" id="sbm">
+                            </form>
+                            <% }else{ %>
+                                <div class="bg-warning text-center text-white">Hired</div>
+                            <%} %>
+                    </td>
+                    <td>  <%= job.reason %> </td>
+                </tr>
+            <% }}) %>
+        </tbody>
+    </table>
+    
+</div>
+<script>
+    document.getElementById("sbt").addEventListener("click", (e)=>{
+        e.preventDefault();
+    })
+</script>

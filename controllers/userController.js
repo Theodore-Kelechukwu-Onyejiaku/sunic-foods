@@ -121,11 +121,31 @@ router.post("/register", (req, res)=>{
 })
 
 router.post("/work", upload.single("photo"), (req, res)=>{
+    // var user = User({
+    //     _id: req.body._id,
+    //     address: req.body.id,
+    //     gender: req.body.gender,
+    //     dob: req.body.dob,
+    //     number: req.body.number,
+    //     photo: req.body.photo,
+    //     reason: req.body.reason,
+    //     approved: req.body.approved,
+    //     applied: req.body.applied
+    // })
+    // user.save((err, doc)=>{
+    //     if(err){
+    //         console.error("Error in updating student information"+ err)
+    //     }else{
+    //         res.render("userLayouts/work");
+    //         console.log(req.body)
+    //     }
+    // })
+        
    // res.end("successfully uploaded:"+req.body)
    User.findOneAndUpdate({_id: req.body._id}, req.body, {new: true}, (err, doc)=>{
     console.log(req.file);
     if(!err){
-        res.render("userLayouts/work");
+        res.render("userLayouts/applicationSuccessful");
         console.log(req.body)
     }else{
         console.error("Error in updating student information"+ err)

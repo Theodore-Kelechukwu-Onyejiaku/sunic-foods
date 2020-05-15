@@ -52,12 +52,19 @@
                                         <ul id="navigation">
                                                 <li><a class="active" href="/">home</a></li>
                                                 <% if(currentUser){ %>
-                                            <li><a href="/orders">Your Orders</a></li>
+                                                    <% if(currentUser.applied === "applied"){ %>
+                                                        <li><a href="/delivery">Deliveries!</a></li>
+                                                    <% }else{ %>
+                                                        <li><a href="/orders">Your Orders</a></li>
+                                                    <% } %>
                                             <li><a href="#"> <i class="fa fa-user" style="font-size: 200%;"></i><%= currentUser.name %><i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
+                                                <% if(currentUser.applied === "applied"){ %>
+                                                    <li><a href="/delivery">Deliver Orders</a></li>
+                                                <% } %>
                                                     <li><a href="/logout">logout</a></li>
                                                     <li><a href="/wallet">View Wallet</a></li>
-                                                    <li><a href="/work/<%= currentUser._id %>">Work With Us</a></li>
+                                                    <li><a href="/work">Work With Us</a></li>
                                                 </ul>
                                             </li> 
                                           <%   } %>

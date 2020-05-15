@@ -42,18 +42,29 @@
     </div>
 </div>
     <!-- slider_area_end -->
-
-    <div class="container mt-5">
-        <div class="card">
-            <h2 class="card-header">Work with us</h2>
-            <div class="card-body">
-              <h5 class="card-title">Delivery</h5>
-              <p class="card-text">Deliver foods and get paid</p>
-              <a href="/work" class="btn btn-success">Apply Now</a>
+   <% if(currentUser.approved === "approved"){ %>
+        <div class="container mt-5">
+            <div class="card">
+                <h2 class="card-header">Now That You have succesfully been Hired</h2>
+                <div class="card-body">
+                  <h5 class="card-title">Deliver Customer Orders</h5>
+                  <p class="card-text">Claim some delivery now!</p>
+                  <a href="/delivery" class="btn btn-success">Deliver Food!</a>
+                </div>
             </div>
         </div>
-    </div>
-
+   <% }else{ %>
+        <div class="container mt-5">
+            <div class="card">
+                <h2 class="card-header">Work with us</h2>
+                <div class="card-body">
+                  <h5 class="card-title">Delivery</h5>
+                  <p class="card-text">Deliver foods and get paid</p>
+                  <a href="/work" class="btn btn-success">Apply Now</a>
+                </div>
+            </div>
+        </div>    
+   <% } %>
     <div class="container mt-5">
         <div class="card">
             <h2 class="card-header">Fund your wallet</h2>
