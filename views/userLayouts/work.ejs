@@ -5,11 +5,12 @@
         <h3 class="card-title">Status: <span class="text-success"><%= currentUser.applied %></span></h5>
         <h3 class="card-title">Hired: <span class="text-warning"><%= currentUser.approved %></span></h5> 
         <a href="/dashboard"  class="btn btn-danger"><i class="fa fa-arrow-left"></i>Back</a>
-
-        <div class="mt-5 text-info">
-            <h3>Successfully Hired!</h3>
-            <a class="text-danger" href="/delivery" style="text-decoration: underline;">Deliver Foods Now!!!</a>
-        </div>
+        <% if(currentUser.approved === "approved"){ %>
+            <div class="mt-5 text-info">
+                <h3>Successfully Hired!</h3>
+                <a class="text-danger" href="/delivery" style="text-decoration: underline;">Deliver Foods Now!!!</a>
+            </div>
+        <% } %>
     </div>
 <% }else{ %>
     <div class="bradcam_area delivery_bg_2">
