@@ -3,7 +3,6 @@
 
 ## Description
 
-These is a project I am to present as my final year project in Federal University of Technology, Owerri (FUTO). It is a food delivery application, which will be a web app and later a mobile app. 
 <br/><b>Project Plan (PIVOTAL TRACKER STORIES):</b> 
 <br/><b>Frontend:</b>  https://sunic-app.herokuapp.com/
 <br/><b> Hosted API on Heroku: </b> 
